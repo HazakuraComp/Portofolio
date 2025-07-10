@@ -50,6 +50,7 @@
             padding: 20px 0;
             z-index: 100;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
         }
         
         .nav-container {
@@ -146,12 +147,18 @@
         
         .hero-text {
             flex: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         
         .hero-image {
             flex: 1;
             display: flex;
             justify-content: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s;
         }
         
         .hero-image img {
@@ -228,6 +235,9 @@
         .section-title {
             text-align: center;
             margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         
         .section-title h2 {
@@ -256,13 +266,21 @@
             padding: 40px 30px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
             cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
         }
+        
+        .service-card:nth-child(1) { transition: opacity 0.6s ease-out 0.1s, transform 0.6s ease-out 0.1s, all 0.3s ease; }
+        .service-card:nth-child(2) { transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s, all 0.3s ease; }
+        .service-card:nth-child(3) { transition: opacity 0.6s ease-out 0.3s, transform 0.6s ease-out 0.3s, all 0.3s ease; }
+        .service-card:nth-child(4) { transition: opacity 0.6s ease-out 0.4s, transform 0.6s ease-out 0.4s, all 0.3s ease; }
+        .service-card:nth-child(5) { transition: opacity 0.6s ease-out 0.5s, transform 0.6s ease-out 0.5s, all 0.3s ease; }
+        .service-card:nth-child(6) { transition: opacity 0.6s ease-out 0.6s, transform 0.6s ease-out 0.6s, all 0.3s ease; }
         
         .service-card:hover {
             border-color: var(--accent);
+            transform: translateY(-5px);
         }
         
         .service-card h3 {
@@ -293,6 +311,9 @@
             flex: 1;
             display: flex;
             justify-content: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         
         .about-image img {
@@ -306,6 +327,9 @@
         
         .about-text {
             flex: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s;
         }
         
         .about-text h2 {
@@ -335,6 +359,9 @@
         
         .owner-text {
             flex: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s;
         }
         
         .owner-text h2 {
@@ -362,6 +389,9 @@
             flex: 1;
             display: flex;
             justify-content: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         
         .owner-image img {
@@ -399,9 +429,21 @@
             color: var(--accent);
         }
         
+        .footer-about {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
         .footer-about p {
             color: #aaa;
             margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out 0.1s, transform 0.6s ease-out 0.1s;
         }
         
         .footer-links h3 {
@@ -429,6 +471,12 @@
             color: var(--accent);
         }
         
+        .footer-contact {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s;
+        }
+        
         .footer-contact h3 {
             font-size: 18px;
             font-weight: 600;
@@ -447,6 +495,26 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #aaa;
             font-size: 14px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out 0.3s, transform 0.6s ease-out 0.3s;
+        }
+        
+        /* Animation Classes */
+        .animate-in {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+        
+        /* Click Animation */
+        .click-effect {
+            animation: clickAnimation 0.4s ease-out;
+        }
+        
+        @keyframes clickAnimation {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.95); }
+            100% { transform: scale(1); }
         }
         
         /* Mobile Styles */
@@ -615,27 +683,27 @@
                 <p>Professional WhatsApp bot solutions with advanced features and reliable performance</p>
             </div>
             <div class="services-grid">
-                <div class="service-card" onclick="window.location.href='#contact'">
+                <div class="service-card" onclick="navigateToContact(this)">
                     <h3>Baileys Multi-Device</h3>
                     <p>Stable multi-device support that doesn't require your phone to be connected 24/7.</p>
                 </div>
-                <div class="service-card" onclick="window.location.href='#contact'">
+                <div class="service-card" onclick="navigateToContact(this)">
                     <h3>MongoDB Database</h3>
                     <p>Secure and scalable database solution for all your bot's data storage needs.</p>
                 </div>
-                <div class="service-card" onclick="window.location.href='#contact'">
+                <div class="service-card" onclick="navigateToContact(this)">
                     <h3>Interactive Features</h3>
                     <p>RPG games, utilities, auto-reply, media handling and more to engage users.</p>
                 </div>
-                <div class="service-card" onclick="window.location.href='#contact'">
+                <div class="service-card" onclick="navigateToContact(this)">
                     <h3>Easy Dashboard</h3>
                     <p>User-friendly control panel to manage all bot features without coding.</p>
                 </div>
-                <div class="service-card" onclick="window.location.href='#contact'">
+                <div class="service-card" onclick="navigateToContact(this)">
                     <h3>24/7 Uptime</h3>
                     <p>Reliable hosting with minimal downtime to keep your bot always available.</p>
                 </div>
-                <div class="service-card" onclick="window.location.href='#contact'">
+                <div class="service-card" onclick="navigateToContact(this)">
                     <h3>Custom Development</h3>
                     <p>Tailored solutions to meet your specific requirements and needs.</p>
                 </div>
@@ -692,25 +760,25 @@
                 <div class="footer-links">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#products">Products</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#owner">Owner</a></li>
+                        <li><a href="#home" class="footer-link">Home</a></li>
+                        <li><a href="#products" class="footer-link">Products</a></li>
+                        <li><a href="#about" class="footer-link">About</a></li>
+                        <li><a href="#owner" class="footer-link">Owner</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
                     <h3>Products</h3>
                     <ul>
-                        <li><a href="#contact">WhatsApp Bot</a></li>
-                        <li><a href="#contact">Multi-Device</a></li>
-                        <li><a href="#contact">Dashboard</a></li>
-                        <li><a href="#contact">Custom Solutions</a></li>
+                        <li><a href="#contact" class="footer-link">WhatsApp Bot</a></li>
+                        <li><a href="#contact" class="footer-link">Multi-Device</a></li>
+                        <li><a href="#contact" class="footer-link">Dashboard</a></li>
+                        <li><a href="#contact" class="footer-link">Custom Solutions</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
                     <h3>Contact</h3>
-                    <p><a href="https://wa.me/6285954540177" style="color: #aaa; text-decoration: none;">WhatsApp: 085954540177</a></p>
-                    <p><a href="mailto:volkszcompany@gmail.com" style="color: #aaa; text-decoration: none;">Email: volkszcompany@gmail.com</a></p>
+                    <p><a href="https://wa.me/6285954540177" class="footer-link">WhatsApp: 085954540177</a></p>
+                    <p><a href="mailto:volkszcompany@gmail.com" class="footer-link">Email: volkszcompany@gmail.com</a></p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -737,10 +805,16 @@
             });
         });
         
-        // Smooth scrolling for anchor links
+        // Smooth scrolling for anchor links with click animation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
+                
+                // Add click effect
+                this.classList.add('click-effect');
+                setTimeout(() => {
+                    this.classList.remove('click-effect');
+                }, 400);
                 
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
@@ -751,6 +825,61 @@
                         behavior: 'smooth'
                     });
                 }
+            });
+        });
+        
+        // Navigation to contact with animation
+        function navigateToContact(element) {
+            element.classList.add('click-effect');
+            setTimeout(() => {
+                element.classList.remove('click-effect');
+                window.location.href = '#contact';
+            }, 200);
+        }
+        
+        // Scroll animation
+        function checkScroll() {
+            const elements = document.querySelectorAll(
+                '.hero-text, .hero-image, .section-title, .service-card, ' +
+                '.about-text, .about-image, .owner-text, .owner-image, ' +
+                '.footer-about, .footer-links, .footer-contact, .footer-bottom'
+            );
+            
+            const windowHeight = window.innerHeight;
+            const triggerPoint = windowHeight * 0.85;
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                
+                if (elementTop < triggerPoint) {
+                    element.classList.add('animate-in');
+                }
+            });
+        }
+        
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Show hero elements immediately
+            document.querySelector('.hero-text').classList.add('animate-in');
+            document.querySelector('.hero-image').classList.add('animate-in');
+            
+            // Check scroll position on load
+            checkScroll();
+        });
+        
+        // Check scroll position on scroll
+        window.addEventListener('scroll', checkScroll);
+        
+        // Make footer links clickable with animation
+        document.querySelectorAll('.footer-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                this.classList.add('click-effect');
+                setTimeout(() => {
+                    this.classList.remove('click-effect');
+                    window.location.href = this.getAttribute('href');
+                }, 200);
             });
         });
     </script>
