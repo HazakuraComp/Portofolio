@@ -1,184 +1,641 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HazakuraComp - Professional WhatsApp Bot Solutions</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #0d0d0d;
-      color: white;
-    }
-    .gold-line {
-      border: 2px solid #d4af37;
-      transform: rotate(45deg);
-    }
-    .gold-text {
-      background: linear-gradient(to right, #f5d76e, #d4af37);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .overlay-gradient {
-      background: radial-gradient(rgba(255, 255, 255, 0.05), transparent);
-    }
-    .profile-image {
-      width: 200px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid #d4af37;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-    }
-    .service-card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      background: #111;
-      border: 1px solid #333;
-    }
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HazakuraComp - Professional WhatsApp Bot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark: #0A0A0A;
+            --light: #F8F8F8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--gold);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--gold);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .nav-button {
+            padding: 10px 20px;
+            border: 1px solid var(--dark);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-button:hover {
+            background-color: var(--dark);
+            color: white;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .hero-text {
+            flex: 1;
+        }
+        
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .hero-image img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero h1 span {
+            display: block;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #555;
+            max-width: 500px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .primary-button {
+            padding: 15px 30px;
+            background-color: var(--gold);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .primary-button:hover {
+            background-color: #c19b2e;
+            transform: translateY(-2px);
+        }
+        
+        .secondary-button {
+            padding: 15px 30px;
+            border: 1px solid var(--dark);
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--dark);
+            transition: all 0.3s ease;
+        }
+        
+        .secondary-button:hover {
+            background-color: var(--dark);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            font-size: 18px;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-card h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .service-card p {
+            color: #666;
+            font-size: 16px;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .about-image img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        
+        /* Owner Section */
+        .owner {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .owner-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .owner-text {
+            flex: 1;
+        }
+        
+        .owner-text h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .owner-info {
+            margin-bottom: 30px;
+        }
+        
+        .owner-info p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .owner-info p strong {
+            color: var(--gold);
+        }
+        
+        .owner-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .owner-image img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo span {
+            color: var(--gold);
+        }
+        
+        .footer-about p {
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+        
+        .footer-contact h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .footer-contact p {
+            color: #aaa;
+            margin-bottom: 10px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 992px) {
+            .hero-content,
+            .about-content,
+            .owner-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+            
+            .about-text h2,
+            .owner-text h2 {
+                font-size: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-image img,
+            .about-image img,
+            .owner-image img {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <!-- Navbar -->
-  <header class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-gray-800" data-aos="fade-down">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <div class="text-xl font-bold tracking-wide font-[PlayfairDisplay]">Hazakura<span class="gold-text">Comp</span></div>
-      <nav class="hidden md:flex space-x-8 text-sm">
-        <a href="#" class="hover:text-yellow-400 transition">Home</a>
-        <a href="#products" class="hover:text-yellow-400 transition">Products</a>
-        <a href="#about" class="hover:text-yellow-400 transition">About</a>
-        <a href="#contact" class="hover:text-yellow-400 transition">Contact</a>
-      </nav>
-      <div class="hidden md:flex">
-        <a href="#owner" class="px-5 py-2 rounded-full border border-white hover:bg-white hover:text-black transition font-semibold">Owner</a>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="relative min-h-screen flex flex-col-reverse lg:flex-row items-center pt-32 pb-16 px-6 overflow-hidden bg-black">
-    <div class="absolute inset-0 z-0">
-      <div class="absolute top-20 right-10 w-56 h-56 gold-line"></div>
-      <div class="absolute bottom-10 left-10 w-64 h-64 gold-line"></div>
-    </div>
-    <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 items-center relative z-10 w-full">
-      <div data-aos="fade-right">
-        <h1 class="text-5xl font-bold mb-3 font-[PlayfairDisplay] gold-text">HazakuraComp</h1>
-        <h2 class="text-lg uppercase tracking-wide text-gray-400 mb-6">Professional WhatsApp Bot Solutions</h2>
-        <p class="text-gray-300 mb-6 leading-relaxed">HazakuraComp provides professional WhatsApp bot solutions based on Baileys library with multi-device support, MongoDB integration, and advanced dashboard features. Create interactive bots with auto-reply, RPG games, utilities, and more with our easy-to-use system.</p>
-        <div class="space-x-4" id="contact">
-          <a href="https://wa.me/6285954540177" class="px-6 py-3 rounded-full bg-yellow-500 text-black font-medium hover:bg-yellow-400 transition">Contact on WhatsApp</a>
-          <a href="#products" class="px-6 py-3 rounded-full border border-white hover:bg-white hover:text-black transition">Our Products</a>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">Hazakura<span>Comp</span></div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#products">Products</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <a href="#owner" class="nav-button">Owner</a>
         </div>
-      </div>
-      <div data-aos="zoom-in" class="flex justify-center">
-        <img src="src/1.jpg" alt="HazakuraComp" class="profile-image">
-      </div>
-    </div>
-  </section>
+    </nav>
 
-  <!-- Products Section -->
-  <section id="products" class="py-24 px-6 bg-[#0d0d0d] border-t border-gray-800">
-    <div class="max-w-5xl mx-auto">
-      <h2 class="text-4xl font-bold gold-text text-center mb-10" data-aos="fade-up">Our WhatsApp Bot Solutions</h2>
-      
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="service-card p-8 rounded-lg" data-aos="fade-up" data-aos-delay="100">
-          <h3 class="text-xl font-semibold mb-4 gold-text">Baileys Multi-Device</h3>
-          <p class="text-gray-300">Our bots use Baileys library for reliable multi-device support, ensuring your bot stays online 24/7 without needing your phone connected.</p>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>
+                        <span>Professional</span>
+                        <span>WhatsApp Bot</span>
+                    </h1>
+                    <p>Create powerful WhatsApp bots with multi-device support, interactive features, and easy management dashboard.</p>
+                    <div class="hero-buttons">
+                        <a href="https://wa.me/6285954540177" class="primary-button">Contact on WhatsApp</a>
+                        <a href="#products" class="secondary-button">Our Products</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="src/1.jpg" alt="HazakuraComp WhatsApp Bot">
+                </div>
+            </div>
         </div>
-        
-        <div class="service-card p-8 rounded-lg" data-aos="fade-up" data-aos-delay="200">
-          <h3 class="text-xl font-semibold mb-4 gold-text">MongoDB Database</h3>
-          <p class="text-gray-300">All data is securely stored in MongoDB with automatic backups, providing reliability and scalability for your bot's needs.</p>
-        </div>
-        
-        <div class="service-card p-8 rounded-lg" data-aos="fade-up" data-aos-delay="300">
-          <h3 class="text-xl font-semibold mb-4 gold-text">Interactive Features</h3>
-          <p class="text-gray-300">Includes RPG games, utility commands, media handling, auto-reply, and jadibot features to engage your users.</p>
-        </div>
-        
-        <div class="service-card p-8 rounded-lg" data-aos="fade-up" data-aos-delay="400">
-          <h3 class="text-xl font-semibold mb-4 gold-text">Easy Dashboard</h3>
-          <p class="text-gray-300">User-friendly dashboard to control all bot features, view statistics, and manage settings without coding knowledge.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- About Section -->
-  <section id="about" class="py-24 px-6 bg-black border-t border-gray-800">
-    <div class="max-w-5xl mx-auto" data-aos="fade-up">
-      <h2 class="text-4xl font-bold gold-text text-center mb-10">About HazakuraComp</h2>
-      <p class="text-gray-300 text-lg leading-relaxed text-center">
-        HazakuraComp specializes in creating advanced WhatsApp bot solutions for businesses and communities. 
-        Our bots are built on Node.js using the Baileys library, offering stable multi-device support and 
-        a wide range of interactive features. We focus on delivering professional, reliable solutions 
-        with excellent performance and security.
-      </p>
-    </div>
-  </section>
-
-  <!-- Owner Section -->
-  <section id="owner" class="py-24 px-6 bg-[#0d0d0d] border-t border-gray-800">
-    <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-      <div data-aos="fade-right" class="flex justify-center">
-        <img src="src/1.jpg" alt="Owner" class="profile-image">
-      </div>
-      <div data-aos="fade-left">
-        <h2 class="text-3xl font-bold gold-text mb-6">About The Owner</h2>
-        <div class="text-gray-300 space-y-4">
-          <p><strong class="gold-text">Name:</strong> David Darren Chandra</p>
-          <p><strong class="gold-text">Age:</strong> 15 years</p>
-          <p><strong class="gold-text">School:</strong> SMA NEGERI 2 PALU</p>
-          <p><strong class="gold-text">Class:</strong> 10 G</p>
-          <p><strong class="gold-text">From:</strong> Palu, Sulawesi Tengah</p>
-          <p class="pt-4">Young developer passionate about creating useful WhatsApp bot solutions and helping communities with technology.</p>
+    <!-- Services Section -->
+    <section class="services" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Products</h2>
+                <p>Professional WhatsApp bot solutions with advanced features and reliable performance</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Baileys Multi-Device</h3>
+                    <p>Stable multi-device support that doesn't require your phone to be connected 24/7.</p>
+                </div>
+                <div class="service-card">
+                    <h3>MongoDB Database</h3>
+                    <p>Secure and scalable database solution for all your bot's data storage needs.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Interactive Features</h3>
+                    <p>RPG games, utilities, auto-reply, media handling and more to engage users.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Easy Dashboard</h3>
+                    <p>User-friendly control panel to manage all bot features without coding.</p>
+                </div>
+                <div class="service-card">
+                    <h3>24/7 Uptime</h3>
+                    <p>Reliable hosting with minimal downtime to keep your bot always available.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Custom Development</h3>
+                    <p>Tailored solutions to meet your specific requirements and needs.</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer class="bg-black border-t border-gray-800 text-center py-12 px-6 text-gray-500">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-xl font-bold tracking-wide font-[PlayfairDisplay] mb-4">Hazakura<span class="gold-text">Comp</span></div>
-      <p class="mb-6 max-w-2xl mx-auto">Professional WhatsApp bot solutions with Baileys multi-device support and advanced features.</p>
-      <div class="flex justify-center space-x-6 mb-8">
-        <a href="https://wa.me/6285954540177" class="hover:text-yellow-400 transition">WhatsApp</a>
-        <a href="#products" class="hover:text-yellow-400 transition">Products</a>
-        <a href="#about" class="hover:text-yellow-400 transition">About</a>
-        <a href="#owner" class="hover:text-yellow-400 transition">Owner</a>
-      </div>
-      <p>&copy; 2023 HazakuraComp. All rights reserved.</p>
-    </div>
-  </footer>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About HazakuraComp</h2>
+                    <p>We specialize in creating advanced WhatsApp bot solutions for businesses and communities. Our bots are built on Node.js using the Baileys library, offering stable multi-device support and a wide range of interactive features.</p>
+                    <p>Our mission is to provide reliable, high-performance bot solutions that help businesses automate their communication and engage with their customers more effectively.</p>
+                </div>
+                <div class="about-image">
+                    <img src="src/1.jpg" alt="About HazakuraComp">
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <script>
-    AOS.init({
-      duration: 800,
-      once: true
-    });
-    
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
-  </script>
+    <!-- Owner Section -->
+    <section class="owner" id="owner">
+        <div class="container">
+            <div class="owner-content">
+                <div class="owner-image">
+                    <img src="src/1.jpg" alt="Owner HazakuraComp">
+                </div>
+                <div class="owner-text">
+                    <h2>About The Owner</h2>
+                    <div class="owner-info">
+                        <p><strong>Name:</strong> David Darren Chandra</p>
+                        <p><strong>Age:</strong> 15 years</p>
+                        <p><strong>School:</strong> SMA NEGERI 2 PALU</p>
+                        <p><strong>Class:</strong> 10 G</p>
+                        <p><strong>From:</strong> Palu, Sulawesi Tengah</p>
+                    </div>
+                    <p>A young developer passionate about creating useful WhatsApp bot solutions and helping communities with technology.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Hazakura<span>Comp</span></div>
+                    <p>Professional WhatsApp bot solutions with multi-device support and advanced features.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#owner">Owner</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="#">WhatsApp Bot</a></li>
+                        <li><a href="#">Multi-Device</a></li>
+                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="#">Custom Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact</h3>
+                    <p>WhatsApp: 085954540177</p>
+                    <p>Email: contact@hazakuracomp.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 HazakuraComp. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
