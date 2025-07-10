@@ -50,12 +50,6 @@
             padding: 20px 0;
             z-index: 100;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.5s ease;
-        }
-        
-        nav.scrolled {
-            padding: 15px 0;
-            background-color: rgba(0, 0, 0, 0.98);
         }
         
         .nav-container {
@@ -152,28 +146,12 @@
         
         .hero-text {
             flex: 1;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        
-        .hero-text.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
         
         .hero-image {
             flex: 1;
             display: flex;
             justify-content: center;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out 0.2s;
-        }
-        
-        .hero-image.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
         
         .hero-image img {
@@ -183,12 +161,6 @@
             border-radius: 50%;
             border: 5px solid var(--accent);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: all 0.5s ease;
-        }
-        
-        .hero-image img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
         }
         
         .hero h1 {
@@ -223,7 +195,12 @@
             text-decoration: none;
             transition: all 0.3s ease;
             border: 2px solid var(--accent);
-            animation: pulse 2s infinite;
+        }
+        
+        .primary-button:hover {
+            background-color: transparent;
+            color: var(--accent);
+            transform: translateY(-3px);
         }
         
         .secondary-button {
@@ -240,22 +217,6 @@
             background-color: var(--secondary);
             color: var(--primary);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
-        }
-        
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
-            }
-            70% {
-                transform: scale(1.03);
-                box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
-            }
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
-            }
         }
         
         /* Services Section */
@@ -267,14 +228,6 @@
         .section-title {
             text-align: center;
             margin-bottom: 60px;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        
-        .section-title.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
         
         .section-title h2 {
@@ -302,45 +255,14 @@
             border-radius: 10px;
             padding: 40px 30px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.5s ease;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        
-        .service-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .service-card:nth-child(1) { transition-delay: 0.1s; }
-        .service-card:nth-child(2) { transition-delay: 0.2s; }
-        .service-card:nth-child(3) { transition-delay: 0.3s; }
-        .service-card:nth-child(4) { transition-delay: 0.4s; }
-        .service-card:nth-child(5) { transition-delay: 0.5s; }
-        .service-card:nth-child(6) { transition-delay: 0.6s; }
-        
-        .service-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), transparent);
-            opacity: 0;
-            transition: all 0.5s ease;
+            cursor: pointer;
         }
         
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
             border-color: var(--accent);
-        }
-        
-        .service-card:hover:before {
-            opacity: 1;
         }
         
         .service-card h3 {
@@ -371,14 +293,6 @@
             flex: 1;
             display: flex;
             justify-content: center;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        
-        .about-image.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
         
         .about-image img {
@@ -388,23 +302,10 @@
             border-radius: 50%;
             border: 5px solid var(--accent);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: all 0.5s ease;
-        }
-        
-        .about-image img:hover {
-            transform: rotate(5deg) scale(1.05);
         }
         
         .about-text {
             flex: 1;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out 0.2s;
-        }
-        
-        .about-text.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
         
         .about-text h2 {
@@ -434,14 +335,6 @@
         
         .owner-text {
             flex: 1;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out 0.2s;
-        }
-        
-        .owner-text.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
         
         .owner-text h2 {
@@ -469,14 +362,6 @@
             flex: 1;
             display: flex;
             justify-content: center;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        
-        .owner-image.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
         
         .owner-image img {
@@ -486,11 +371,6 @@
             border-radius: 50%;
             border: 5px solid var(--accent);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: all 0.5s ease;
-        }
-        
-        .owner-image img:hover {
-            transform: scale(1.05) rotate(-5deg);
         }
         
         /* Footer */
@@ -519,31 +399,9 @@
             color: var(--accent);
         }
         
-        .footer-about {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        
-        .footer-about.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
         .footer-about p {
             color: #aaa;
             margin-bottom: 20px;
-        }
-        
-        .footer-links {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out 0.1s;
-        }
-        
-        .footer-links.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
         
         .footer-links h3 {
@@ -571,17 +429,6 @@
             color: var(--accent);
         }
         
-        .footer-contact {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out 0.2s;
-        }
-        
-        .footer-contact.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
         .footer-contact h3 {
             font-size: 18px;
             font-weight: 600;
@@ -600,65 +447,6 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #aaa;
             font-size: 14px;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out 0.3s;
-        }
-        
-        .footer-bottom.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Scroll Indicator */
-        .scroll-indicator {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 60px;
-            border: 2px solid var(--accent);
-            border-radius: 20px;
-            opacity: 0.7;
-            z-index: 10;
-            animation: bounce 2s infinite;
-        }
-        
-        .scroll-indicator:before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            width: 6px;
-            height: 6px;
-            background: var(--accent);
-            border-radius: 50%;
-            transform: translateX(-50%);
-            animation: scroll 2s infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0) translateX(-50%);
-            }
-            40% {
-                transform: translateY(-20px) translateX(-50%);
-            }
-            60% {
-                transform: translateY(-10px) translateX(-50%);
-            }
-        }
-        
-        @keyframes scroll {
-            0% {
-                opacity: 1;
-                top: 10px;
-            }
-            100% {
-                opacity: 0;
-                top: 40px;
-            }
         }
         
         /* Mobile Styles */
@@ -709,7 +497,6 @@
             
             .mobile-menu.active {
                 display: block;
-                animation: fadeInDown 0.5s ease;
             }
             
             .mobile-menu a {
@@ -718,23 +505,10 @@
                 color: var(--secondary);
                 text-decoration: none;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                transition: all 0.3s ease;
             }
             
             .mobile-menu a:hover {
                 color: var(--accent);
-                padding-left: 10px;
-            }
-            
-            @keyframes fadeInDown {
-                from {
-                    opacity: 0;
-                    transform: translateY(-20px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
             }
         }
         
@@ -831,7 +605,6 @@
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator"></div>
     </section>
 
     <!-- Services Section -->
@@ -842,27 +615,27 @@
                 <p>Professional WhatsApp bot solutions with advanced features and reliable performance</p>
             </div>
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card" onclick="window.location.href='#contact'">
                     <h3>Baileys Multi-Device</h3>
                     <p>Stable multi-device support that doesn't require your phone to be connected 24/7.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card" onclick="window.location.href='#contact'">
                     <h3>MongoDB Database</h3>
                     <p>Secure and scalable database solution for all your bot's data storage needs.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card" onclick="window.location.href='#contact'">
                     <h3>Interactive Features</h3>
                     <p>RPG games, utilities, auto-reply, media handling and more to engage users.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card" onclick="window.location.href='#contact'">
                     <h3>Easy Dashboard</h3>
                     <p>User-friendly control panel to manage all bot features without coding.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card" onclick="window.location.href='#contact'">
                     <h3>24/7 Uptime</h3>
                     <p>Reliable hosting with minimal downtime to keep your bot always available.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card" onclick="window.location.href='#contact'">
                     <h3>Custom Development</h3>
                     <p>Tailored solutions to meet your specific requirements and needs.</p>
                 </div>
@@ -928,16 +701,16 @@
                 <div class="footer-links">
                     <h3>Products</h3>
                     <ul>
-                        <li><a href="#">WhatsApp Bot</a></li>
-                        <li><a href="#">Multi-Device</a></li>
-                        <li><a href="#">Dashboard</a></li>
-                        <li><a href="#">Custom Solutions</a></li>
+                        <li><a href="#contact">WhatsApp Bot</a></li>
+                        <li><a href="#contact">Multi-Device</a></li>
+                        <li><a href="#contact">Dashboard</a></li>
+                        <li><a href="#contact">Custom Solutions</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
                     <h3>Contact</h3>
-                    <p>WhatsApp: 085954540177</p>
-                    <p>Email: contact@hazakuracomp.com</p>
+                    <p><a href="https://wa.me/6285954540177" style="color: #aaa; text-decoration: none;">WhatsApp: 085954540177</a></p>
+                    <p><a href="mailto:volkszcompany@gmail.com" style="color: #aaa; text-decoration: none;">Email: volkszcompany@gmail.com</a></p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -964,45 +737,6 @@
             });
         });
         
-        // Navbar Scroll Effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-        
-        // Scroll Animation
-        const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.hero-text, .hero-image, .section-title, .service-card, .about-text, .about-image, .owner-text, .owner-image, .footer-about, .footer-links, .footer-contact, .footer-bottom');
-            
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementBottom = element.getBoundingClientRect().bottom;
-                const windowHeight = window.innerHeight;
-                
-                // Check if element is in viewport
-                if (elementTop < windowHeight - 100 && elementBottom > 0) {
-                    element.classList.add('visible');
-                }
-            });
-        };
-        
-        // Run once on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            // Immediately show hero elements
-            document.querySelector('.hero-text').classList.add('visible');
-            document.querySelector('.hero-image').classList.add('visible');
-            
-            // Then check for other elements
-            animateOnScroll();
-        });
-        
-        // Run on scroll
-        window.addEventListener('scroll', animateOnScroll);
-        
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -1017,32 +751,6 @@
                         behavior: 'smooth'
                     });
                 }
-            });
-        });
-        
-        // Button hover effects
-        const buttons = document.querySelectorAll('.primary-button, .secondary-button, .nav-button');
-        
-        buttons.forEach(button => {
-            button.addEventListener('mouseenter', () => {
-                button.style.transform = 'translateY(-3px)';
-            });
-            
-            button.addEventListener('mouseleave', () => {
-                button.style.transform = '';
-            });
-        });
-        
-        // Card hover effects
-        const cards = document.querySelectorAll('.service-card');
-        
-        cards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-10px)';
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = '';
             });
         });
     </script>
