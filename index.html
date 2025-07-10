@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HazakuraComp - Professional WhatsApp Bot</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         :root {
             --primary: #000000;
@@ -19,6 +18,10 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
         }
         
         body {
@@ -149,12 +152,28 @@
         
         .hero-text {
             flex: 1;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .hero-text.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .hero-image {
             flex: 1;
             display: flex;
             justify-content: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out 0.2s;
+        }
+        
+        .hero-image.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .hero-image img {
@@ -204,13 +223,7 @@
             text-decoration: none;
             transition: all 0.3s ease;
             border: 2px solid var(--accent);
-        }
-        
-        .primary-button:hover {
-            background-color: transparent;
-            color: var(--accent);
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+            animation: pulse 2s infinite;
         }
         
         .secondary-button {
@@ -226,8 +239,23 @@
         .secondary-button:hover {
             background-color: var(--secondary);
             color: var(--primary);
-            transform: translateY(-3px) scale(1.05);
+            transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+            }
+            70% {
+                transform: scale(1.03);
+                box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+            }
         }
         
         /* Services Section */
@@ -239,6 +267,14 @@
         .section-title {
             text-align: center;
             margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .section-title.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .section-title h2 {
@@ -269,7 +305,21 @@
             transition: all 0.5s ease;
             position: relative;
             overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
         }
+        
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .service-card:nth-child(1) { transition-delay: 0.1s; }
+        .service-card:nth-child(2) { transition-delay: 0.2s; }
+        .service-card:nth-child(3) { transition-delay: 0.3s; }
+        .service-card:nth-child(4) { transition-delay: 0.4s; }
+        .service-card:nth-child(5) { transition-delay: 0.5s; }
+        .service-card:nth-child(6) { transition-delay: 0.6s; }
         
         .service-card:before {
             content: '';
@@ -321,6 +371,14 @@
             flex: 1;
             display: flex;
             justify-content: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .about-image.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .about-image img {
@@ -339,6 +397,14 @@
         
         .about-text {
             flex: 1;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out 0.2s;
+        }
+        
+        .about-text.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .about-text h2 {
@@ -368,6 +434,14 @@
         
         .owner-text {
             flex: 1;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out 0.2s;
+        }
+        
+        .owner-text.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .owner-text h2 {
@@ -395,6 +469,14 @@
             flex: 1;
             display: flex;
             justify-content: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .owner-image.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .owner-image img {
@@ -437,9 +519,31 @@
             color: var(--accent);
         }
         
+        .footer-about {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .footer-about.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
         .footer-about p {
             color: #aaa;
             margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out 0.1s;
+        }
+        
+        .footer-links.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .footer-links h3 {
@@ -467,6 +571,17 @@
             color: var(--accent);
         }
         
+        .footer-contact {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out 0.2s;
+        }
+        
+        .footer-contact.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
         .footer-contact h3 {
             font-size: 18px;
             font-weight: 600;
@@ -485,16 +600,12 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #aaa;
             font-size: 14px;
-        }
-        
-        /* Animations */
-        .animate-in {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.6s ease-out;
+            transition: all 0.8s ease-out 0.3s;
         }
         
-        .animate-in.visible {
+        .footer-bottom.visible {
             opacity: 1;
             transform: translateY(0);
         }
@@ -648,6 +759,13 @@
             .owner-text h2 {
                 font-size: 30px;
             }
+            
+            .hero-image img,
+            .about-image img,
+            .owner-image img {
+                width: 250px;
+                height: 250px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -662,13 +780,6 @@
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
-            }
-            
-            .hero-image img,
-            .about-image img,
-            .owner-image img {
-                width: 250px;
-                height: 250px;
             }
             
             .footer-content {
@@ -704,19 +815,19 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-text animate-in">
+                <div class="hero-text">
                     <h1>
                         <span>Professional</span>
                         <span>WhatsApp Bot</span>
                     </h1>
                     <p>Create powerful WhatsApp bots with multi-device support, interactive features, and easy management dashboard.</p>
                     <div class="hero-buttons">
-                        <a href="https://wa.me/6285954540177" class="primary-button animate__animated animate__pulse animate__infinite animate__slower">Contact on WhatsApp</a>
+                        <a href="https://wa.me/6285954540177" class="primary-button">Contact on WhatsApp</a>
                         <a href="#products" class="secondary-button">Our Products</a>
                     </div>
                 </div>
-                <div class="hero-image animate-in">
-                    <img src="src/1.jpg" alt="HazakuraComp WhatsApp Bot" class="animate__animated animate__pulse animate__infinite animate__slower">
+                <div class="hero-image">
+                    <img src="src/1.jpg" alt="HazakuraComp WhatsApp Bot">
                 </div>
             </div>
         </div>
@@ -726,32 +837,32 @@
     <!-- Services Section -->
     <section class="services" id="products">
         <div class="container">
-            <div class="section-title animate-in">
+            <div class="section-title">
                 <h2>Our Products</h2>
                 <p>Professional WhatsApp bot solutions with advanced features and reliable performance</p>
             </div>
             <div class="services-grid">
-                <div class="service-card animate-in">
+                <div class="service-card">
                     <h3>Baileys Multi-Device</h3>
                     <p>Stable multi-device support that doesn't require your phone to be connected 24/7.</p>
                 </div>
-                <div class="service-card animate-in" style="transition-delay: 0.1s">
+                <div class="service-card">
                     <h3>MongoDB Database</h3>
                     <p>Secure and scalable database solution for all your bot's data storage needs.</p>
                 </div>
-                <div class="service-card animate-in" style="transition-delay: 0.2s">
+                <div class="service-card">
                     <h3>Interactive Features</h3>
                     <p>RPG games, utilities, auto-reply, media handling and more to engage users.</p>
                 </div>
-                <div class="service-card animate-in" style="transition-delay: 0.3s">
+                <div class="service-card">
                     <h3>Easy Dashboard</h3>
                     <p>User-friendly control panel to manage all bot features without coding.</p>
                 </div>
-                <div class="service-card animate-in" style="transition-delay: 0.4s">
+                <div class="service-card">
                     <h3>24/7 Uptime</h3>
                     <p>Reliable hosting with minimal downtime to keep your bot always available.</p>
                 </div>
-                <div class="service-card animate-in" style="transition-delay: 0.5s">
+                <div class="service-card">
                     <h3>Custom Development</h3>
                     <p>Tailored solutions to meet your specific requirements and needs.</p>
                 </div>
@@ -763,12 +874,12 @@
     <section class="about" id="about">
         <div class="container">
             <div class="about-content">
-                <div class="about-text animate-in">
+                <div class="about-text">
                     <h2>About HazakuraComp</h2>
                     <p>We specialize in creating advanced WhatsApp bot solutions for businesses and communities. Our bots are built on Node.js using the Baileys library, offering stable multi-device support and a wide range of interactive features.</p>
                     <p>Our mission is to provide reliable, high-performance bot solutions that help businesses automate their communication and engage with their customers more effectively.</p>
                 </div>
-                <div class="about-image animate-in" style="transition-delay: 0.2s">
+                <div class="about-image">
                     <img src="src/1.jpg" alt="About HazakuraComp">
                 </div>
             </div>
@@ -779,10 +890,10 @@
     <section class="owner" id="owner">
         <div class="container">
             <div class="owner-content">
-                <div class="owner-image animate-in">
+                <div class="owner-image">
                     <img src="src/1.jpg" alt="Owner HazakuraComp">
                 </div>
-                <div class="owner-text animate-in" style="transition-delay: 0.2s">
+                <div class="owner-text">
                     <h2>About The Owner</h2>
                     <div class="owner-info">
                         <p><strong>Name:</strong> David Darren Chandra</p>
@@ -801,11 +912,11 @@
     <footer id="contact">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-about animate-in">
+                <div class="footer-about">
                     <div class="footer-logo">Hazakura<span>Comp</span></div>
                     <p>Professional WhatsApp bot solutions with multi-device support and advanced features.</p>
                 </div>
-                <div class="footer-links animate-in" style="transition-delay: 0.1s">
+                <div class="footer-links">
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="#home">Home</a></li>
@@ -814,7 +925,7 @@
                         <li><a href="#owner">Owner</a></li>
                     </ul>
                 </div>
-                <div class="footer-links animate-in" style="transition-delay: 0.2s">
+                <div class="footer-links">
                     <h3>Products</h3>
                     <ul>
                         <li><a href="#">WhatsApp Bot</a></li>
@@ -823,13 +934,13 @@
                         <li><a href="#">Custom Solutions</a></li>
                     </ul>
                 </div>
-                <div class="footer-contact animate-in" style="transition-delay: 0.3s">
+                <div class="footer-contact">
                     <h3>Contact</h3>
                     <p>WhatsApp: 085954540177</p>
-                    <p>Email: volkszcompany@gmail.com</p>
+                    <p>Email: contact@hazakuracomp.com</p>
                 </div>
             </div>
-            <div class="footer-bottom animate-in" style="transition-delay: 0.4s">
+            <div class="footer-bottom">
                 <p>&copy; 2023 HazakuraComp. All rights reserved.</p>
             </div>
         </div>
@@ -845,35 +956,11 @@
             mobileMenuBtn.textContent = mobileMenu.classList.contains('active') ? '✕' : '☰';
         });
         
-        // Smooth Scrolling for Anchor Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    // Close mobile menu if open
-                    if (mobileMenu.classList.contains('active')) {
-                        mobileMenu.classList.remove('active');
-                        mobileMenuBtn.textContent = '☰';
-                    }
-                    
-                    // Smooth scroll to target
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Add click animation
-                    if (this.classList.contains('primary-button') {
-                        this.classList.add('animate__animated', 'animate__rubberBand');
-                        setTimeout(() => {
-                            this.classList.remove('animate__animated', 'animate__rubberBand');
-                        }, 1000);
-                    }
-                }
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                mobileMenuBtn.textContent = '☰';
             });
         });
         
@@ -888,31 +975,57 @@
         });
         
         // Scroll Animation
-        const animateElements = document.querySelectorAll('.animate-in');
-        
         const animateOnScroll = () => {
-            animateElements.forEach(element => {
+            const elements = document.querySelectorAll('.hero-text, .hero-image, .section-title, .service-card, .about-text, .about-image, .owner-text, .owner-image, .footer-about, .footer-links, .footer-contact, .footer-bottom');
+            
+            elements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
+                const elementBottom = element.getBoundingClientRect().bottom;
                 const windowHeight = window.innerHeight;
                 
-                if (elementTop < windowHeight - 100) {
+                // Check if element is in viewport
+                if (elementTop < windowHeight - 100 && elementBottom > 0) {
                     element.classList.add('visible');
                 }
             });
         };
         
-        // Initial check
-        animateOnScroll();
+        // Run once on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Immediately show hero elements
+            document.querySelector('.hero-text').classList.add('visible');
+            document.querySelector('.hero-image').classList.add('visible');
+            
+            // Then check for other elements
+            animateOnScroll();
+        });
         
-        // Check on scroll
+        // Run on scroll
         window.addEventListener('scroll', animateOnScroll);
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
         
         // Button hover effects
         const buttons = document.querySelectorAll('.primary-button, .secondary-button, .nav-button');
         
         buttons.forEach(button => {
             button.addEventListener('mouseenter', () => {
-                button.style.transform = 'translateY(-3px) scale(1.05)';
+                button.style.transform = 'translateY(-3px)';
             });
             
             button.addEventListener('mouseleave', () => {
