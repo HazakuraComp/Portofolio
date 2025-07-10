@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HazakuraComp - MitsuGoshi</title>
+  <title>HazakuraComp - Professional WhatsApp Bot Solutions</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
@@ -13,6 +13,7 @@
     body {
       font-family: 'Inter', sans-serif;
       background-color: #0d0d0d;
+      color: white;
     }
     .gold-line {
       border: 2px solid #d4af37;
@@ -26,10 +27,27 @@
     .overlay-gradient {
       background: radial-gradient(rgba(255, 255, 255, 0.05), transparent);
     }
+    .profile-image {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #d4af37;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    }
+    .service-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: #111;
+      border: 1px solid #333;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+    }
   </style>
 </head>
 
-<body class="text-white">
+<body>
   <!-- Navbar -->
   <header class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-gray-800" data-aos="fade-down">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -41,7 +59,7 @@
         <a href="#contact" class="hover:text-yellow-400 transition">Contact</a>
       </nav>
       <div class="hidden md:flex">
-        <a href="#biodata" class="px-5 py-2 rounded-full border border-white hover:bg-white hover:text-black transition font-semibold">Biodata Owner</a>
+        <a href="#owner" class="px-5 py-2 rounded-full border border-white hover:bg-white hover:text-black transition font-semibold">Owner</a>
       </div>
     </div>
   </header>
@@ -55,33 +73,44 @@
     <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 items-center relative z-10 w-full">
       <div data-aos="fade-right">
         <h1 class="text-5xl font-bold mb-3 font-[PlayfairDisplay] gold-text">HazakuraComp</h1>
-        <h2 class="text-lg uppercase tracking-wide text-gray-400 mb-6">Crate to Improve an Whatsapp Bot</h2>
-        <p class="text-gray-300 mb-6 leading-relaxed">HazakuraComp menyediakan solusi pembuatan bot WhatsApp profesional berbasis Node.js dengan dukungan multi-device, MongoDB, dan fitur dashboard yang canggih. Anda cukup menyiapkan akun WhatsApp, lalu login ke sistem kami untuk mengelola bot seperti auto-reply, jadibot, RPG, dan command interaktif lainnya.</p>
+        <h2 class="text-lg uppercase tracking-wide text-gray-400 mb-6">Professional WhatsApp Bot Solutions</h2>
+        <p class="text-gray-300 mb-6 leading-relaxed">HazakuraComp provides professional WhatsApp bot solutions based on Baileys library with multi-device support, MongoDB integration, and advanced dashboard features. Create interactive bots with auto-reply, RPG games, utilities, and more with our easy-to-use system.</p>
         <div class="space-x-4" id="contact">
-          <a href="https://wa.me/6285954540177" class="px-6 py-3 rounded-full bg-white text-black font-medium hover:bg-yellow-300 transition">Contact Us</a>
-          <a href="#products" class="px-6 py-3 rounded-full border border-white hover:bg-white hover:text-black transition">Learn More</a>
+          <a href="https://wa.me/6285954540177" class="px-6 py-3 rounded-full bg-yellow-500 text-black font-medium hover:bg-yellow-400 transition">Contact on WhatsApp</a>
+          <a href="#products" class="px-6 py-3 rounded-full border border-white hover:bg-white hover:text-black transition">Our Products</a>
         </div>
       </div>
       <div data-aos="zoom-in" class="flex justify-center">
-        <img src="/mnt/data/713de04c-f4b0-4fa9-8c4d-974a128e4775.jpeg" alt="Profile" class="rounded-full w-60 h-60 object-cover border-4 border-white shadow-xl">
+        <img src="src/1.jpg" alt="HazakuraComp" class="profile-image">
       </div>
     </div>
   </section>
 
   <!-- Products Section -->
   <section id="products" class="py-24 px-6 bg-[#0d0d0d] border-t border-gray-800">
-    <div class="max-w-5xl mx-auto" data-aos="fade-up">
-      <h2 class="text-4xl font-bold gold-text text-center mb-10">Our Product</h2>
-      <div class="bg-[#111] border border-gray-700 rounded-xl p-8 shadow-lg">
-        <h3 class="text-2xl font-semibold mb-4">WhatsApp Bot System</h3>
-        <ul class="list-disc list-inside text-gray-300 space-y-2">
-          <li>Multi-device support with Baileys</li>
-          <li>Dashboard untuk kontrol fitur bot</li>
-          <li>Command modular: RPG, Game, Utilitas</li>
-          <li>Integrasi database MongoDB</li>
-          <li>Auto reply, media handling, jadibot</li>
-          <li>Desain profesional & mudah digunakan</li>
-        </ul>
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-4xl font-bold gold-text text-center mb-10" data-aos="fade-up">Our WhatsApp Bot Solutions</h2>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="service-card p-8 rounded-lg" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="text-xl font-semibold mb-4 gold-text">Baileys Multi-Device</h3>
+          <p class="text-gray-300">Our bots use Baileys library for reliable multi-device support, ensuring your bot stays online 24/7 without needing your phone connected.</p>
+        </div>
+        
+        <div class="service-card p-8 rounded-lg" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="text-xl font-semibold mb-4 gold-text">MongoDB Database</h3>
+          <p class="text-gray-300">All data is securely stored in MongoDB with automatic backups, providing reliability and scalability for your bot's needs.</p>
+        </div>
+        
+        <div class="service-card p-8 rounded-lg" data-aos="fade-up" data-aos-delay="300">
+          <h3 class="text-xl font-semibold mb-4 gold-text">Interactive Features</h3>
+          <p class="text-gray-300">Includes RPG games, utility commands, media handling, auto-reply, and jadibot features to engage your users.</p>
+        </div>
+        
+        <div class="service-card p-8 rounded-lg" data-aos="fade-up" data-aos-delay="400">
+          <h3 class="text-xl font-semibold mb-4 gold-text">Easy Dashboard</h3>
+          <p class="text-gray-300">User-friendly dashboard to control all bot features, view statistics, and manage settings without coding knowledge.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -91,33 +120,64 @@
     <div class="max-w-5xl mx-auto" data-aos="fade-up">
       <h2 class="text-4xl font-bold gold-text text-center mb-10">About HazakuraComp</h2>
       <p class="text-gray-300 text-lg leading-relaxed text-center">
-        HazakuraComp adalah penyedia layanan digital kreatif yang fokus pada pengembangan bot WhatsApp, dashboard interaktif, dan sistem berbasis Node.js. Kami mengutamakan desain yang modern, performa tinggi, dan keamanan data. Dengan pengalaman dalam dunia pengembangan aplikasi berbasis chat dan backend, kami siap membantu kebutuhan digitalisasi Anda.
+        HazakuraComp specializes in creating advanced WhatsApp bot solutions for businesses and communities. 
+        Our bots are built on Node.js using the Baileys library, offering stable multi-device support and 
+        a wide range of interactive features. We focus on delivering professional, reliable solutions 
+        with excellent performance and security.
       </p>
     </div>
   </section>
 
-  <!-- Biodata Owner -->
-  <section id="biodata" class="py-24 px-6 bg-[#0d0d0d] border-t border-gray-800">
-    <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
-      <h2 class="text-4xl font-bold gold-text mb-8">Biodata Owner</h2>
-      <div class="text-gray-300 text-lg space-y-3">
-        <p><strong>Nama:</strong> David Darren Chandra</p>
-        <p><strong>Umur:</strong> 15 tahun</p>
-        <p><strong>Kelas:</strong> 10 G</p>
-        <p><strong>Asal:</strong> Palu, Sulawesi Tengah</p>
+  <!-- Owner Section -->
+  <section id="owner" class="py-24 px-6 bg-[#0d0d0d] border-t border-gray-800">
+    <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+      <div data-aos="fade-right" class="flex justify-center">
+        <img src="src/1.jpg" alt="Owner" class="profile-image">
+      </div>
+      <div data-aos="fade-left">
+        <h2 class="text-3xl font-bold gold-text mb-6">About The Owner</h2>
+        <div class="text-gray-300 space-y-4">
+          <p><strong class="gold-text">Name:</strong> David Darren Chandra</p>
+          <p><strong class="gold-text">Age:</strong> 15 years</p>
+          <p><strong class="gold-text">School:</strong> SMA NEGERI 2 PALU</p>
+          <p><strong class="gold-text">Class:</strong> 10 G</p>
+          <p><strong class="gold-text">From:</strong> Palu, Sulawesi Tengah</p>
+          <p class="pt-4">Young developer passionate about creating useful WhatsApp bot solutions and helping communities with technology.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-black border-t border-gray-800 text-center py-6 text-gray-500 text-sm" data-aos="fade-up">
-    &copy; 2025 HazakuraComp. All rights reserved.
+  <footer class="bg-black border-t border-gray-800 text-center py-12 px-6 text-gray-500">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-xl font-bold tracking-wide font-[PlayfairDisplay] mb-4">Hazakura<span class="gold-text">Comp</span></div>
+      <p class="mb-6 max-w-2xl mx-auto">Professional WhatsApp bot solutions with Baileys multi-device support and advanced features.</p>
+      <div class="flex justify-center space-x-6 mb-8">
+        <a href="https://wa.me/6285954540177" class="hover:text-yellow-400 transition">WhatsApp</a>
+        <a href="#products" class="hover:text-yellow-400 transition">Products</a>
+        <a href="#about" class="hover:text-yellow-400 transition">About</a>
+        <a href="#owner" class="hover:text-yellow-400 transition">Owner</a>
+      </div>
+      <p>&copy; 2023 HazakuraComp. All rights reserved.</p>
+    </div>
   </footer>
 
   <script>
     AOS.init({
-      duration: 1000,
+      duration: 800,
       once: true
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
     });
   </script>
 </body>
