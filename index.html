@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HazakuraComp - Professional WhatsApp Bot</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         :root {
-            --gold: #D4AF37;
+            --primary: #000000;
+            --secondary: #FFFFFF;
+            --accent: #D4AF37;
             --dark: #0A0A0A;
             --light: #F8F8F8;
         }
@@ -20,9 +23,10 @@
         
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--light);
-            color: var(--dark);
+            background-color: var(--primary);
+            color: var(--secondary);
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         .container {
@@ -38,11 +42,17 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(10px);
             padding: 20px 0;
             z-index: 100;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.5s ease;
+        }
+        
+        nav.scrolled {
+            padding: 15px 0;
+            background-color: rgba(0, 0, 0, 0.98);
         }
         
         .nav-container {
@@ -54,10 +64,11 @@
         .logo {
             font-size: 24px;
             font-weight: 700;
+            color: var(--secondary);
         }
         
         .logo span {
-            color: var(--gold);
+            color: var(--accent);
         }
         
         .nav-links {
@@ -67,11 +78,12 @@
         
         .nav-links a {
             text-decoration: none;
-            color: var(--dark);
+            color: var(--secondary);
             font-weight: 500;
             font-size: 14px;
             letter-spacing: 0.5px;
             position: relative;
+            transition: all 0.3s ease;
         }
         
         .nav-links a:after {
@@ -81,7 +93,7 @@
             height: 2px;
             bottom: -5px;
             left: 0;
-            background-color: var(--gold);
+            background-color: var(--accent);
             transition: width 0.3s ease;
         }
         
@@ -89,18 +101,34 @@
             width: 100%;
         }
         
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
         .nav-button {
             padding: 10px 20px;
-            border: 1px solid var(--dark);
+            border: 1px solid var(--secondary);
             border-radius: 50px;
             font-weight: 600;
             font-size: 14px;
             transition: all 0.3s ease;
+            color: var(--secondary);
+            text-decoration: none;
         }
         
         .nav-button:hover {
-            background-color: var(--dark);
-            color: white;
+            background-color: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--secondary);
+            font-size: 24px;
+            cursor: pointer;
         }
         
         /* Hero Section */
@@ -108,6 +136,9 @@
             padding: 180px 0 100px;
             position: relative;
             overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
         }
         
         .hero-content {
@@ -131,8 +162,14 @@
             height: 300px;
             object-fit: cover;
             border-radius: 50%;
-            border: 5px solid white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 5px solid var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s ease;
+        }
+        
+        .hero-image img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
         }
         
         .hero h1 {
@@ -149,7 +186,7 @@
         .hero p {
             font-size: 18px;
             margin-bottom: 30px;
-            color: #555;
+            color: #aaa;
             max-width: 500px;
         }
         
@@ -160,39 +197,43 @@
         
         .primary-button {
             padding: 15px 30px;
-            background-color: var(--gold);
-            color: white;
+            background-color: var(--accent);
+            color: var(--primary);
             border-radius: 50px;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
+            border: 2px solid var(--accent);
         }
         
         .primary-button:hover {
-            background-color: #c19b2e;
-            transform: translateY(-2px);
+            background-color: transparent;
+            color: var(--accent);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
         }
         
         .secondary-button {
             padding: 15px 30px;
-            border: 1px solid var(--dark);
+            border: 2px solid var(--secondary);
             border-radius: 50px;
             font-weight: 600;
             text-decoration: none;
-            color: var(--dark);
+            color: var(--secondary);
             transition: all 0.3s ease;
         }
         
         .secondary-button:hover {
-            background-color: var(--dark);
-            color: white;
-            transform: translateY(-2px);
+            background-color: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
         }
         
         /* Services Section */
         .services {
             padding: 100px 0;
-            background-color: white;
+            background-color: var(--dark);
         }
         
         .section-title {
@@ -204,11 +245,12 @@
             font-size: 36px;
             font-weight: 700;
             margin-bottom: 15px;
+            color: var(--secondary);
         }
         
         .section-title p {
             font-size: 18px;
-            color: #555;
+            color: #aaa;
             max-width: 600px;
             margin: 0 auto;
         }
@@ -220,33 +262,53 @@
         }
         
         .service-card {
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.05);
             border-radius: 10px;
             padding: 40px 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), transparent);
+            opacity: 0;
+            transition: all 0.5s ease;
         }
         
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--accent);
+        }
+        
+        .service-card:hover:before {
+            opacity: 1;
         }
         
         .service-card h3 {
             font-size: 22px;
             font-weight: 600;
             margin-bottom: 15px;
+            color: var(--accent);
         }
         
         .service-card p {
-            color: #666;
+            color: #ccc;
             font-size: 16px;
         }
         
         /* About Section */
         .about {
             padding: 100px 0;
-            background-color: #f9f9f9;
+            background-color: var(--primary);
         }
         
         .about-content {
@@ -266,8 +328,13 @@
             height: 300px;
             object-fit: cover;
             border-radius: 50%;
-            border: 5px solid white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 5px solid var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s ease;
+        }
+        
+        .about-image img:hover {
+            transform: rotate(5deg) scale(1.05);
         }
         
         .about-text {
@@ -278,18 +345,19 @@
             font-size: 36px;
             font-weight: 700;
             margin-bottom: 20px;
+            color: var(--secondary);
         }
         
         .about-text p {
             font-size: 18px;
-            color: #555;
+            color: #aaa;
             margin-bottom: 30px;
         }
         
         /* Owner Section */
         .owner {
             padding: 100px 0;
-            background-color: white;
+            background-color: var(--dark);
         }
         
         .owner-content {
@@ -306,6 +374,7 @@
             font-size: 36px;
             font-weight: 700;
             margin-bottom: 20px;
+            color: var(--secondary);
         }
         
         .owner-info {
@@ -315,10 +384,11 @@
         .owner-info p {
             font-size: 18px;
             margin-bottom: 10px;
+            color: #ccc;
         }
         
         .owner-info p strong {
-            color: var(--gold);
+            color: var(--accent);
         }
         
         .owner-image {
@@ -332,15 +402,21 @@
             height: 300px;
             object-fit: cover;
             border-radius: 50%;
-            border: 5px solid white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 5px solid var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s ease;
+        }
+        
+        .owner-image img:hover {
+            transform: scale(1.05) rotate(-5deg);
         }
         
         /* Footer */
         footer {
-            background-color: var(--dark);
-            color: white;
+            background-color: var(--primary);
+            color: var(--secondary);
             padding: 60px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .footer-content {
@@ -354,10 +430,11 @@
             font-size: 24px;
             font-weight: 700;
             margin-bottom: 20px;
+            color: var(--secondary);
         }
         
         .footer-logo span {
-            color: var(--gold);
+            color: var(--accent);
         }
         
         .footer-about p {
@@ -369,6 +446,7 @@
             font-size: 18px;
             font-weight: 600;
             margin-bottom: 20px;
+            color: var(--secondary);
         }
         
         .footer-links ul {
@@ -386,13 +464,14 @@
         }
         
         .footer-links a:hover {
-            color: var(--gold);
+            color: var(--accent);
         }
         
         .footer-contact h3 {
             font-size: 18px;
             font-weight: 600;
             margin-bottom: 20px;
+            color: var(--secondary);
         }
         
         .footer-contact p {
@@ -403,9 +482,72 @@
         .footer-bottom {
             text-align: center;
             padding-top: 30px;
-            border-top: 1px solid #333;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #aaa;
             font-size: 14px;
+        }
+        
+        /* Animations */
+        .animate-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .animate-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 60px;
+            border: 2px solid var(--accent);
+            border-radius: 20px;
+            opacity: 0.7;
+            z-index: 10;
+            animation: bounce 2s infinite;
+        }
+        
+        .scroll-indicator:before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            animation: scroll 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+        
+        @keyframes scroll {
+            0% {
+                opacity: 1;
+                top: 10px;
+            }
+            100% {
+                opacity: 0;
+                top: 40px;
+            }
         }
         
         /* Mobile Styles */
@@ -433,13 +575,59 @@
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
             }
-        }
-        
-        @media (max-width: 768px) {
+            
             .nav-links {
                 display: none;
             }
             
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .mobile-menu {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary);
+                padding: 20px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                display: none;
+                z-index: 99;
+            }
+            
+            .mobile-menu.active {
+                display: block;
+                animation: fadeInDown 0.5s ease;
+            }
+            
+            .mobile-menu a {
+                display: block;
+                padding: 10px 0;
+                color: var(--secondary);
+                text-decoration: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                transition: all 0.3s ease;
+            }
+            
+            .mobile-menu a:hover {
+                color: var(--accent);
+                padding-left: 10px;
+            }
+            
+            @keyframes fadeInDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        }
+        
+        @media (max-width: 768px) {
             .hero h1 {
                 font-size: 36px;
             }
@@ -491,7 +679,7 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav>
+    <nav id="navbar">
         <div class="container nav-container">
             <div class="logo">Hazakura<span>Comp</span></div>
             <div class="nav-links">
@@ -501,6 +689,14 @@
                 <a href="#contact">Contact</a>
             </div>
             <a href="#owner" class="nav-button">Owner</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#home">Home</a>
+            <a href="#products">Products</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <a href="#owner">Owner</a>
         </div>
     </nav>
 
@@ -508,53 +704,54 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-text">
+                <div class="hero-text animate-in">
                     <h1>
                         <span>Professional</span>
                         <span>WhatsApp Bot</span>
                     </h1>
                     <p>Create powerful WhatsApp bots with multi-device support, interactive features, and easy management dashboard.</p>
                     <div class="hero-buttons">
-                        <a href="https://wa.me/6285954540177" class="primary-button">Contact on WhatsApp</a>
+                        <a href="https://wa.me/6285954540177" class="primary-button animate__animated animate__pulse animate__infinite animate__slower">Contact on WhatsApp</a>
                         <a href="#products" class="secondary-button">Our Products</a>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <img src="src/1.jpg" alt="HazakuraComp WhatsApp Bot">
+                <div class="hero-image animate-in">
+                    <img src="src/1.jpg" alt="HazakuraComp WhatsApp Bot" class="animate__animated animate__pulse animate__infinite animate__slower">
                 </div>
             </div>
         </div>
+        <div class="scroll-indicator"></div>
     </section>
 
     <!-- Services Section -->
     <section class="services" id="products">
         <div class="container">
-            <div class="section-title">
+            <div class="section-title animate-in">
                 <h2>Our Products</h2>
                 <p>Professional WhatsApp bot solutions with advanced features and reliable performance</p>
             </div>
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card animate-in">
                     <h3>Baileys Multi-Device</h3>
                     <p>Stable multi-device support that doesn't require your phone to be connected 24/7.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card animate-in" style="transition-delay: 0.1s">
                     <h3>MongoDB Database</h3>
                     <p>Secure and scalable database solution for all your bot's data storage needs.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card animate-in" style="transition-delay: 0.2s">
                     <h3>Interactive Features</h3>
                     <p>RPG games, utilities, auto-reply, media handling and more to engage users.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card animate-in" style="transition-delay: 0.3s">
                     <h3>Easy Dashboard</h3>
                     <p>User-friendly control panel to manage all bot features without coding.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card animate-in" style="transition-delay: 0.4s">
                     <h3>24/7 Uptime</h3>
                     <p>Reliable hosting with minimal downtime to keep your bot always available.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card animate-in" style="transition-delay: 0.5s">
                     <h3>Custom Development</h3>
                     <p>Tailored solutions to meet your specific requirements and needs.</p>
                 </div>
@@ -566,12 +763,12 @@
     <section class="about" id="about">
         <div class="container">
             <div class="about-content">
-                <div class="about-text">
+                <div class="about-text animate-in">
                     <h2>About HazakuraComp</h2>
                     <p>We specialize in creating advanced WhatsApp bot solutions for businesses and communities. Our bots are built on Node.js using the Baileys library, offering stable multi-device support and a wide range of interactive features.</p>
                     <p>Our mission is to provide reliable, high-performance bot solutions that help businesses automate their communication and engage with their customers more effectively.</p>
                 </div>
-                <div class="about-image">
+                <div class="about-image animate-in" style="transition-delay: 0.2s">
                     <img src="src/1.jpg" alt="About HazakuraComp">
                 </div>
             </div>
@@ -582,10 +779,10 @@
     <section class="owner" id="owner">
         <div class="container">
             <div class="owner-content">
-                <div class="owner-image">
+                <div class="owner-image animate-in">
                     <img src="src/1.jpg" alt="Owner HazakuraComp">
                 </div>
-                <div class="owner-text">
+                <div class="owner-text animate-in" style="transition-delay: 0.2s">
                     <h2>About The Owner</h2>
                     <div class="owner-info">
                         <p><strong>Name:</strong> David Darren Chandra</p>
@@ -604,11 +801,11 @@
     <footer id="contact">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-about">
+                <div class="footer-about animate-in">
                     <div class="footer-logo">Hazakura<span>Comp</span></div>
                     <p>Professional WhatsApp bot solutions with multi-device support and advanced features.</p>
                 </div>
-                <div class="footer-links">
+                <div class="footer-links animate-in" style="transition-delay: 0.1s">
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="#home">Home</a></li>
@@ -617,7 +814,7 @@
                         <li><a href="#owner">Owner</a></li>
                     </ul>
                 </div>
-                <div class="footer-links">
+                <div class="footer-links animate-in" style="transition-delay: 0.2s">
                     <h3>Products</h3>
                     <ul>
                         <li><a href="#">WhatsApp Bot</a></li>
@@ -626,16 +823,115 @@
                         <li><a href="#">Custom Solutions</a></li>
                     </ul>
                 </div>
-                <div class="footer-contact">
+                <div class="footer-contact animate-in" style="transition-delay: 0.3s">
                     <h3>Contact</h3>
                     <p>WhatsApp: 085954540177</p>
-                    <p>Email: contact@hazakuracomp.com</p>
+                    <p>Email: volkszcompany@gmail.com</p>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="footer-bottom animate-in" style="transition-delay: 0.4s">
                 <p>&copy; 2023 HazakuraComp. All rights reserved.</p>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            mobileMenuBtn.textContent = mobileMenu.classList.contains('active') ? '✕' : '☰';
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // Close mobile menu if open
+                    if (mobileMenu.classList.contains('active')) {
+                        mobileMenu.classList.remove('active');
+                        mobileMenuBtn.textContent = '☰';
+                    }
+                    
+                    // Smooth scroll to target
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Add click animation
+                    if (this.classList.contains('primary-button') {
+                        this.classList.add('animate__animated', 'animate__rubberBand');
+                        setTimeout(() => {
+                            this.classList.remove('animate__animated', 'animate__rubberBand');
+                        }, 1000);
+                    }
+                }
+            });
+        });
+        
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Scroll Animation
+        const animateElements = document.querySelectorAll('.animate-in');
+        
+        const animateOnScroll = () => {
+            animateElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('visible');
+                }
+            });
+        };
+        
+        // Initial check
+        animateOnScroll();
+        
+        // Check on scroll
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Button hover effects
+        const buttons = document.querySelectorAll('.primary-button, .secondary-button, .nav-button');
+        
+        buttons.forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                button.style.transform = 'translateY(-3px) scale(1.05)';
+            });
+            
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = '';
+            });
+        });
+        
+        // Card hover effects
+        const cards = document.querySelectorAll('.service-card');
+        
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+    </script>
 </body>
 </html>
